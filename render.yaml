@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: hyper-dev
+    env: docker
+    healthCheckPath: /
+    envVars:
+      - key: TARGET_DIR
+        value: /hyper-data
+      - key: SECRET
+        generateValue: true
+      - key: DENO_ENV
+        value: production
+    disk:
+      name: hyper-data
+      mountPath: /hyper-data
+      sizeGB: 10
+    domains:
+      - bl-dev.hyper63.com
